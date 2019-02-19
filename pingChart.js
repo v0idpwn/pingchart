@@ -4,7 +4,7 @@ var maxData = 50;
 var startAtZero = true;
 var borderWidth = 1;
 var showLabel = true;
-
+var pingRoute = "ping.php";
 
 $(document).ready(function(){
     var ctx = document.getElementById("pingChart").getContext("2d");
@@ -55,7 +55,7 @@ async function updater(pingChart){
     while(1){
         await sleep(updateRate);
         counter+=1;
-        $.get("ping.php", function(data){
+        $.get(pingRoute, function(data){
             dataH = (data.ping);
         });
         addData(pingChart, counter,dataH);
